@@ -7,13 +7,10 @@ import Image from 'next/image';
 import s from './Buyers.module.scss';
 import { AchiveIcon } from 'components/icons/AchiveIcon';
 import Link from 'next/link';
-import { MinusIcon } from 'components/icons/MinusIcon';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { SeacrhIcon } from 'components/icons/social/SeacrhIcon';
-import { ArrowRight } from 'components/icons/ArrowIcons';
 import Pagination from '@mui/material/Pagination';
 import { FilterArrowsIcon } from 'components/icons/FilterIcon';
-import {Modal} from './modal/modal'
 import {Item} from 'components/pages/buyers/item/Item';
 
 export function Buyers() {
@@ -33,6 +30,14 @@ export function Buyers() {
       const normalizedUserName = seller.userName.toLowerCase();
       const isNameMatch = normalizedUserName.includes(normalizedQuery);
   // !If
+  const sellerDate = new Date(seller.date);
+  if (dateFrom && dateTo) {
+    return isNameMatch && sellerDate >= new Date(dateFrom) && sellerDate <= new Date(dateTo);
+  } else if (dateFrom) {
+    return isNameMatch && sellerDate >= new Date(dateFrom)
+  } else if (dateTo){
+    return isNameMatch && sellerDate <= new Date(dateTo);
+  } 
       return isNameMatch;
     });
     console.log(new Date(sellers[0].date))
@@ -52,8 +57,6 @@ export function Buyers() {
     setCurrentPage(value);
   };
 
-  // !Modal
-  // const [openModal, setOpenModal] = useState(false);
 
   // ! Sort
   const [isDescendingOrder, setIsDescendingOrder] = useState(true);
@@ -71,7 +74,9 @@ export function Buyers() {
     setFilterSellers(sortedSellers);
     setIsDescendingOrder(!isDescendingOrder);
   };
-
+  // * if
+  
+     
   // ! Sort Date
   const [sortDate, setSortDate] = useState(true)
   const sortByDate = () => {
@@ -80,9 +85,9 @@ export function Buyers() {
       const dateB = new Date(b.date).getTime();
   
       if (sortDate) {
-        return dateA - dateB; // Сортировка по возрастанию
+        return dateA - dateB; 
       } else {
-        return dateB - dateA; // Сортировка по убыванию
+        return dateB - dateA; 
       }
     });
     setFilterSellers(sortedDate);
@@ -102,21 +107,6 @@ const changeStatus = (userId: string) => {
 };
 
 
-  //
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [sellers, setsellers] = useState([]);
-  // const [postsPerPage, setPostsPerPage] = useState(10);
-
-  // useEffect(async()=> {
-  //   const response = await axios.get(sellers);
-
-  // })
-  // const lastPostIndex = currentPage * postsPerPage;
-  // const firstPostIndex = lastPostIndex - postsPerPage;
-  // const currentPosts = sellers.slice(firstPostIndex, lastPostIndex)
-
-  //
-
   return (
     <Section>
       <Section.Header>
@@ -133,10 +123,6 @@ const changeStatus = (userId: string) => {
                   width={76}
                   height={76}
                   alt="foto"
-                  // loader={({ src, width: w, quality }) => {
-                  //   const q = quality || 75;
-                  //   return `${src}?w=${w}&q=${q}`;
-                  // }}
                 />
                 <span className={s.user_place}>{buyer.achievements[0]}</span>
               </Link>
@@ -211,7 +197,6 @@ const changeStatus = (userId: string) => {
         <p className={s.designation_userOffers}>Offers</p>
       </div>
       <div>
-        {/* filterSellers для поиска  currentItems для пагинации */}
         <ul className={s.sellers}>
           {currentItems.map((seller, index) => (
             <Item key={seller.purchases} user={seller} handler={() => changeStatus(seller.id)} />
@@ -227,20 +212,7 @@ const changeStatus = (userId: string) => {
         />
         </div>
       </div>
-      {/* <Modal open={openModal} onClose={() => setOpenModal(false)} /> */}
     </Section>
   );
 }
 
-  // * if
-  
-      // const sellerDate = new Date(seller.date);
-      // if (dateFrom && dateTo) {
-      //   return isNameMatch && sellerDate >= new Date(dateFrom) && sellerDate <= new Date(dateTo);
-      // } else if (dateFrom) {
-      //   return isNameMatch && sellerDate >= new Date(dateFrom)
-      // } else if (dateTo){
-      //   return isNameMatch && sellerDate <= new Date(dateTo);
-      // } else {
-      //   return true;
-      // }

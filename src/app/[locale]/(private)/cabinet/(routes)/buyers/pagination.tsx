@@ -5,7 +5,7 @@ import {initialSellers} from './mockup';
 
 const itemsPerPage = 3;
 
-const PaginatedList = ({ data }) => {
+const PaginatedList = ( data:any ) => {
   const [currentPage, setCurrentPage] = useState(1);
 
     const handleChange = (event:any, value:any) => {
@@ -30,6 +30,6 @@ const PaginatedList = ({ data }) => {
   );
 };
 
-export default function PaginationRounded({ initialSellers }) {
+export default function PaginationRounded( initialSellers:any ) {
   return <PaginatedList data={initialSellers} />;
 }
