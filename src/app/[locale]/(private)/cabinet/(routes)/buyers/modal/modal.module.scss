@@ -1,0 +1,106 @@
+
+// !Modal
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.48);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    overflow: hidden;
+  }
+  
+  .wrapper {
+    width: 648px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: #20222B;
+    overflow: hidden;
+  }
+  
+  .top {
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: #D8DEEB;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.33;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  
+    >div {
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+  
+        &:hover {
+            color: gray;
+        }
+    }
+  }
+  
+  .content {
+    padding: 24px;
+    color: #D8DEEB;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.37;
+    opacity: 0.72;
+  }
+  
+  .bottom {
+    padding: 24px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    background-color: rgba(0, 0, 0, 0.24);
+    backdrop-filter: blur(24px);
+  }
+  
+  .btnPrimary {
+    width: 120px;
+    padding: 14px 0;
+    color: #D8DEEB;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.42;
+    border-radius: 12px;
+    background-color: rgba(57, 60, 77, 0.24);
+    backdrop-filter: blur(12px);
+    transition: all 0.2s ease-in-out;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+  
+    &:hover {
+        opacity: 0.8;
+    }
+  }
+  
+  .btnSecondary {
+    width: 120px;
+    padding: 14px 0;
+    color: #D8DEEB;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.42;
+    border-radius: 12px;
+    background-color: var(--signal-error, #D05);
+    backdrop-filter: blur(12px);
+    transition: all 0.2s ease-in-out;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+  
+    &:hover {
+        opacity: 0.8;
+    }
+  }

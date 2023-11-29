@@ -1,0 +1,245 @@
+@import 'constants/constans.scss';
+.box {
+  border-radius: 20px;
+  background: rgba(25, 25, 35, 0.36);
+  backdrop-filter: blur(12px);
+  padding: 24px;
+}
+.buyer {
+  &_list {
+    @include flexRow(center, space-between);
+    margin-top: 24px;
+    // column-gap: toRem(24);
+    // max-width: toRem(648);
+    // margin: auto ;
+  }
+  &_item {
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.24);
+    backdrop-filter: blur(12px);
+    padding: 16px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.user {
+  width: toRem(200);
+  @include flexColumn(center, center);
+  text-align: center;
+  &_image {
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+  }
+  // &:nth-child(2) {
+  //     order: -1;
+  // }
+
+  // &:nth-child(3) {
+  //     order: 1;
+  // }
+
+  &_place {
+    @include flexRow(center, center);
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%) translateY(40%);
+    border-radius: 50%;
+    background-color: $white;
+    border: toRem(1) solid $mainColor;
+    // color: $accent;
+    font-weight: 600;
+    width: toRem(24);
+    height: toRem(24);
+    line-height: 137.5%; /* 22/16 */
+    width: 36px;
+    height: 36px;
+  }
+  &_name {
+    margin-top: toRem(24);
+
+    color: $dark;
+    font-size: toRem(20);
+    font-weight: 600;
+    line-height: 140%; /* 28/20 */
+  }
+  &_achive {
+    margin-top: toRem(12);
+    @include flexRow(center, flex-start);
+    column-gap: toRem(4);
+    color: $mainColor;
+  }
+}
+.search {
+  gap: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  &_seller {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  &_inputSearch {
+    min-width: 328px;
+  }
+  &_inputDate {
+    width: 244px;
+  }
+  &_boxIcon {
+    border-radius: 12px;
+    background: rgba(57, 60, 77, 0.24);
+    backdrop-filter: blur(12px);
+    display: flex;
+    width: 48px;
+    height: 48px;
+    padding: 0px 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+}
+.designation {
+  @include flexRow(center);
+  gap: 24px;
+  padding: 16px 0;
+  &_box {
+    width: 24px;
+    height: 24px;
+  }
+  &_userName {
+    width: 250px;
+  }
+  &_userNumber {
+    width: 160px;
+  }
+  &_userDate {
+    width: 160px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  &_userPurchases {
+    width: 102px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  &_userOffers {
+    width: 120px;
+  }
+}
+
+.sellers {
+  // @include flexRow(center, flex-start);
+  &_image {
+    display: flex;
+    gap: 8px;
+    width: 250px;
+  }
+  &_number {
+    width: 160px;
+  }
+  &_data {
+    width: 160px;
+  }
+  &_item {
+    @include flexRow(center);
+    padding: 16px 0;
+    gap: 24px;
+  }
+  &_box {
+    width: 24px;
+    height: 24px;
+  }
+  &_text {
+    display: flex;
+    flex-direction: column;
+  }
+  &_money {
+    display: flex;
+    flex-direction: column;
+    width: 102px;
+  }
+  .true {
+    display: flex;
+    border-radius: 50%;
+    background-color: red;
+    border: 0.0625rem solid var(--main-color);
+  }
+  .false {
+    display: flex;
+    background-color: var(--white);
+    border: 0.0625rem solid var(--main-color);
+    border-radius: 50%;
+  }
+  &_arrow {
+    border-radius: 12px;
+    background: rgba(57, 60, 77, 0.24);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    display: flex;
+    width: 48px;
+    height: 48px;
+    padding: 0px 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+}
+.pagination {
+  @include flexRow(center, flex-end);
+  &_el {
+    color: white;
+  }
+}
+
+.pagination_el ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.pagination_el button {
+  background: rgba(57, 60, 77, 0.24);
+  backdrop-filter: blur(12px);
+  color: white;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+  width: 48px;
+  height: 48px;
+}
+
+.headerBox {
+  display: flex;
+  justify-content: space-between;
+}
+.text {
+  padding: 24px;
+}
+.body {
+  padding: 0;
+}
+.buttonBox {
+  @include flexRow(center, flex-end);
+  column-gap: toRem(24);
+  padding-top: toRem(24);
+  border-top: toRem(1) solid $grey_pale;
+  &_button {
+    display: flex;
+    width: 120px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background: rgba(57, 60, 77, 0.24);
+    backdrop-filter: blur(12px);
+    &:hover {
+      border-radius: 12px;
+      background: var(--signal-error, #d05);
+    }
+  }
+}
